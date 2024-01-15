@@ -1,5 +1,5 @@
-import { Board } from "./components/Board";
+import { History } from "./components/History";
 
 export default function App() {
-  return <Board />;
+  return <History />;
 }

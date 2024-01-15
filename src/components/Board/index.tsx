@@ -1,12 +1,15 @@
-import { useState } from "react";
 import { calculateWinner } from "../../utils/calculateWinner";
 import { Player } from "../Player";
 import { Square } from "../Square";
 import { Winner } from "../Winner";
 
-export const Board = () => {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
+interface Board {
+  xIsNext: boolean;
+  squares: any[];
+  onPlay: (nextSquares: []) => void;
+}
+
+export const Board = ({ xIsNext, squares, onPlay }: Board) => {
   const winner = calculateWinner(squares);
 
   const handleClick = (i: number) => {
@@ -15,8 +18,7 @@ export const Board = () => {
     const nextSquares = squares.slice();
     xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
 
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   };
 
   return (
