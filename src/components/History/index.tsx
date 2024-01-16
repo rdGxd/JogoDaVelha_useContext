@@ -18,6 +18,7 @@ export const History = () => {
   };
 
   const moves = history.map((squares, move) => {
+    console.log(squares);
     let description;
     if (move > 0) {
       description = `Go to move # ${move}`;
@@ -25,7 +26,10 @@ export const History = () => {
       description = `Go to game start`;
     }
     return (
-      <li key={move}>
+      <li
+        key={move}
+        className="mb-3 rounded border border-white p-2 hover:bg-red-500 sm:max-w-fit sm:p-3"
+      >
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
@@ -33,16 +37,16 @@ export const History = () => {
 
   return (
     <>
-      <div className="GAME">
-        <div className="GAME-BOARD">
+      <div className="GAME content-center p-5 text-center ">
+        <div className="GAME-BOARD flex justify-center">
           <Board
             xIsNext={xIsNext}
             squares={currentSquares}
             onPlay={handlePlay}
           />
         </div>
-        <div className="GAME-INFO">
-          <ol>{moves}</ol>
+        <div className="GAME-INFO mt-10 text-white  sm:flex sm:content-center sm:items-center sm:justify-center">
+          <ol className="">{moves}</ol>
         </div>
       </div>
     </>

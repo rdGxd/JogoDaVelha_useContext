@@ -7,7 +7,7 @@ export const Square = ({ value, onSquareClick }: ISquare) => {
   return (
     <>
       <button
-        className="SQUARE float-left h-9 w-9 border border-[#999] bg-white text-center text-2xl"
+        className="SQUARE float-left flex h-16 w-16 items-center justify-center border border-[#999] bg-white p-10 text-center text-2xl"
         onClick={onSquareClick}
       >
         {value}
